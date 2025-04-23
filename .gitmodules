@@ -1,7 +1,7 @@
 [submodule "kinova_robust_control"]
     path = src/kinova_robust_control
     url = git@github.com:roahmlab/kinova_robust_control.git
-    branch = humble
+    branch = online_safe_sysid
 [submodule "RAPTOR"]
     path = src/RAPTOR
     url = https://github.com/roahmlab/RAPTOR.git
