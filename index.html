@@ -51,9 +51,28 @@
 							Precise manipulation tasks require accurate knowledge of payload inertial parameters.
 							Unfortunately, identifying these parameters for unknown payloads while ensuring that the robotic system satisfies its input and state constraints while avoiding collisions with the environment remains a significant challenge.
 							This paper presents an integrated framework that enables robotic manipulators to safely and automatically identify payload parameters while maintaining operational safety guarantees. 
-							The framework consists of two synergistic components: 
-							an online trajectory planning and control framework that generates provably-safe exciting trajectories for system identification that can be tracked while respecting robot constraints and avoiding obstacles and a robust system identification method that computes rigorous overapproximative bounds on end-effector inertial parameters assuming bounded sensor noise. 
+							The framework consists of two synergistic components: <br>
+							(1) an online trajectory planning and control framework that generates provably-safe exciting trajectories for system identification that can be tracked while respecting robot constraints and avoiding obstacles; <br>
+							(2) a robust system identification method that computes rigorous overapproximative bounds on end-effector inertial parameters assuming bounded sensor noise. <br>
 							Experimental validation on a robotic manipulator performing challenging tasks with various unknown payloads demonstrates the framework's effectiveness in establishing accurate parameter bounds while maintaining safety throughout the identification process.
+						</p>
+
+						<div class="box alt" style="margin-bottom: 1em;">
+							<div class="row 50% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 100%">
+									<span class="image fit" style="margin-bottom: 0.5em;">
+										<img src="images/framework-overview-2.png" alt="Framework Overview" style="width: 100%;" />
+									</span>
+								</div>
+							</div>
+						</div>
+
+						<p style="color: black;">
+							This figure summarizes the proposed framework. Initially, the approach assumes an overapproximated bound on the inertial parameters of the robot end-effector with unknown payloads. 
+							A trajectory planner (Section V) then generates a provably-safe, locally exciting desired trajectory in real-time based on this initial bound. 
+							A robust controller, modified from <a href="https://roahmlab.github.io/ARMOUR/">ARMOUR</a>, tracks this exciting trajectory while collecting robot data including joint positions, velocities, and applied torques. 
+							Using this collected data, the robust system identification method (Section IV) generates a new, tighter overapproximated bound on the end-effector inertial parameters. 
+							This process iterates continuously, with additional data enabling more precise parameter estimation and improved planner and controller performance.
 						</p>
 
 						<hr>
@@ -82,7 +101,7 @@
 						</div>
 
 						<hr>
-						<h3>Full Demo of Stacking Heavy Unknown Dumbbells</h3>
+						<h3>Full Demo of Experiment (b): Stacking Heavy Unknown Dumbbells</h3>
 
 						<div class="box alt" style="margin-bottom: 1em;">
 							<div class="row 50% uniform" style="width: 100%; color: black;">
@@ -95,7 +114,7 @@
 							<div class="row 50% uniform" style="width: 100%;">
 								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 100%">
 									<span class="image fit" style="margin-bottom: 0.5em;">
-										<iframe width="100%" height="500" src="https://www.youtube.com/embed/qGd_MyNBQBE?si=x56XY1xeNI-N1s5R" title="Full Demo of Stacking Heavy Unknown Dumbbells" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+										<iframe width="100%" height="500" src="https://www.youtube.com/embed/qGd_MyNBQBE?si=HiKHbxsJ9Ybwfp7w" title="Full Demo of Stacking Heavy Unknown Dumbbells" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 									</span>
 								</div>
 							</div>
