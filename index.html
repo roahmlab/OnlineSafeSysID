@@ -1,0 +1,245 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Provably-Safe, Online System Identification</title>
+		<meta charset="utf-8" />
+		 <meta name="viewport" content="width=1000">
+		<link rel="stylesheet" href="assets/css/main.css" />
+
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-LS6L6LB7RX"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-LS6L6LB7RX');
+		</script>
+
+		<meta property="og:url"           content="https://roahmlab.github.io/OnlineSafeSysID/" />
+	    <meta property="og:type"          content="website" />
+	    <meta property="og:title"         content="Provably-Safe, Online System Identification" />
+	    <meta property="og:description"   content="Dynamic locomotion for humanoid robots presents significant analytical and computational challenges due to the extensive number of linkages and degrees of freedom. This complexity results in a vast search space for feasible gaits which translates into a time-consuming process when optimizing over trajectories. In addition, the process often involves numerous hyperparameters and requires a good initial guess or a warm-start strategy, further complicating the development process. Existing methods struggle to integrate the latest hardware designs, such as actuated ankles with closed-loop mechanisms, which offer increased stability, but introduce additional constraints into the dynamics that can be challenging to represent in a computationally tractable fashion. This work introduces a generalized gait optimization framework that directly generates smooth and physically feasible trajectories. The proposed method demonstrates faster and more robust convergence than existing techniques and explicitly incorporates closed-loop constraints. The method is implemented as an open-source C++ codebase that significantly reduces computation times, facilitating dynamic locomotion for full-size humanoids." />
+	    
+
+	</head>
+	<body id="top">
+		<!-- Main -->
+			<div id="main" style="padding-bottom:1em; padding-top: 5em; width: 60em; max-width: 70em; margin-left: auto; margin-right: auto;">
+					<section id="four">
+						<div class="box alt" style="margin-bottom: 1em;">
+							<div class="row 0% uniform" style="width: 100%; display: flex; justify-content: space-between;">
+								<!-- UM Robotics Logo -->
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 20%">
+									<span class="image fit" style="margin-bottom: 0.5em; margin-top: 0.3em">
+										<img src="images/MRoboticsicon.svg" alt="">
+									</span>
+								</div>
+								<!-- RoahmLab Logo -->
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 22%">
+									<span class="image fit" style="margin-bottom: 0.5em; margin-top: 0.3em">
+										<img src="images/ROAHMLABicon.png" alt="">
+									</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- <h1 style="text-align: center; margin-bottom: 0; color: #8C1515; font-size: 300%">Provably-Safe, Online System Identification</h1> -->
+						<h2 style="text-align: center; white-space: nowrap; color: #8C1515; font-size: 200%">Provably-Safe, Online System Identification</h2>
+
+						<p style="color: black;">
+							Precise manipulation tasks require accurate knowledge of payload inertial parameters.
+							Unfortunately, identifying these parameters for unknown payloads while ensuring that the robotic system satisfies its input and state constraints while avoiding collisions with the environment remains a significant challenge.
+							This paper presents an integrated framework that enables robotic manipulators to safely and automatically identify payload parameters while maintaining operational safety guarantees. 
+							The framework consists of two synergistic components: 
+							an online trajectory planning and control framework that generates provably-safe exciting trajectories for system identification that can be tracked while respecting robot constraints and avoiding obstacles and a robust system identification method that computes rigorous overapproximative bounds on end-effector inertial parameters assuming bounded sensor noise. 
+							Experimental validation on a robotic manipulator performing challenging tasks with various unknown payloads demonstrates the framework's effectiveness in establishing accurate parameter bounds while maintaining safety throughout the identification process.
+						</p>
+
+						<hr>
+						<h3>Links</h3>
+
+						<div class="box alt" style="margin-bottom: 1em;">
+							<div class="row 50% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 20%">
+									<a href="https://arxiv.org/abs/2409.00303">
+										<span class="image fit" style="margin-bottom: 0.5em;">
+											<img src="images/documentation.svg" alt=""/>
+										</span>
+										Paper
+									</a>
+								</div>
+
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 20%">
+									<a href="https://github.com/roahmlab/OnlineSafeSysID">
+										<span class="image fit" style="margin-bottom: 0.5em;">
+											<img src="images/github_logo.svg" alt=""/>
+										</span>
+										Codebase
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<hr>
+						<h3>Full Demo of Stacking Heavy Unknown Dumbbells</h3>
+
+						<div class="box alt" style="margin-bottom: 1em;">
+							<div class="row 50% uniform" style="width: 100%; color: black;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: left; width: 100%">
+									Full demonstration of our method while safely manipulating and stacking heavy unknown dumbbells (Experiment (b)). <br><br>
+									Our method performs identification of the payload inertial parameters online while ensuring that the robot avoids collisions with the environment and respects its input and state constraints.
+									Then the robot follows a predefined trajectory to stack the dumbbells vertically on a specific location.
+								</div>
+							</div>
+							<div class="row 50% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 100%">
+									<span class="image fit" style="margin-bottom: 0.5em;">
+										<iframe width="100%" height="500" src="https://www.youtube.com/embed/qGd_MyNBQBE?si=x56XY1xeNI-N1s5R" title="Full Demo of Stacking Heavy Unknown Dumbbells" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+									</span>
+								</div>
+							</div>
+						</div>
+
+						<hr>
+						<h3>Experiment (a) and (b): Accurate and Robust Manipulation of a Wide Range of Unknown Payloads</h3>
+						
+						<div class="box alt" style="margin-bottom: 1em;">
+							<div class="row 50% uniform" style="width: 100%; color: black;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: left; width: 100%">
+									Identifying inertial parameters of end effector online to accurately stack unknown dumbbells vertically on a specific location (clips of Experiment (b)). <br>
+								</div>
+							</div>
+							<div class="row 50% uniform" style="width: 100%; color: black;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: left; width: 33.33%">
+									<span style="color: green;">success!</span><br>
+									our method on 6lb (2.72kg) dumbbell
+								</div>
+								
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: left; width: 33.33%">
+									<span style="color: green;">success!</span><br>
+									our method on 7lb (3.18kg) dumbbell
+								</div>
+
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: left; width: 33.33%">
+									<span style="color: green;">success!</span><br>
+									our method on 8lb (3.63kg) dumbbell
+								</div>
+							</div>
+							<div class="row 50% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33.33%">
+									<span class="image fit" style="margin-bottom: 0.5em;">
+										<video controls autoplay loop muted playsinline style="width: 100%; margin-right: 5%;"><source src="https://github.com/user-attachments/assets/12127e3a-f8a3-484f-8088-0b0825c9dbd2" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33.33%">
+									<span class="image fit" style="margin-bottom: 0.5em;">
+										<video controls autoplay loop muted playsinline style="width: 100%; margin-right: 5%;"><source src="https://github.com/user-attachments/assets/f936acd5-c6b8-42bd-b75e-1630ce9f3b39" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33.33%">
+									<span class="image fit" style="margin-bottom: 0.5em;">
+										<video controls autoplay loop muted playsinline style="width: 100%; margin-right: 5%;"><source src="https://github.com/user-attachments/assets/f81e9f7b-0b4e-4863-87bf-9681b44d57a8" type="video/mp4"> </video>
+									</span>
+								</div>
+							</div>
+						</div>
+
+						<hr>
+						<h3>Experiment (c): Accurate and Robust Tracjectory Tracking with Heavy Unknown Payloads for Collision Avoidance</h3>
+
+						<div class="box alt" style="margin-bottom: 1em;">
+							<div class="row 50% uniform" style="width: 100%; color: black;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: left; width: 100%">
+									Identifying inertial parameters of end effector online and then following a predefined trajectory to avoid obstacles in a more challenging setting (clips of Experiment (c)). <br>
+								</div>
+							</div>
+							<div class="row 50% uniform" style="width: 100%; color: black;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: left; width: 33.33%">
+									<span style="color: green;">success!</span><br>
+									our method
+								</div>
+								
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: left; width: 33.33%">
+									<span style="color: red;">fail!</span><br>
+									grav-pid-ours: gravity compensated PID controller with identified payload parameters
+								</div>
+
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: left; width: 33.33%">
+									<span style="color: red;">fail!</span><br>
+									adap-1-excit: adaptive controller with exciting trajectories
+								</div>
+							</div>
+							<div class="row 50% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33.33%">
+									<span class="image fit" style="margin-bottom: 0.5em;">
+										<video controls autoplay loop muted playsinline style="width: 100%; margin-right: 5%;"><source src="https://github.com/user-attachments/assets/6091305b-6002-44d1-9318-856e8e948db4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33.33%">
+									<span class="image fit" style="margin-bottom: 0.5em;">
+										<video controls autoplay loop muted playsinline style="width: 100%; margin-right: 5%;"><source src="https://github.com/user-attachments/assets/06d162a0-20e6-4493-8f97-db90f283eafb" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33.33%">
+									<span class="image fit" style="margin-bottom: 0.5em;">
+										<video controls autoplay loop muted playsinline style="width: 100%; margin-right: 5%;"><source src="https://github.com/user-attachments/assets/10dc2975-cd2d-4f64-87fc-316afe0a497d" type="video/mp4"> </video>
+									</span>
+								</div>
+							</div>
+						</div>
+						
+						<hr>
+						<h3>Authors</h3>
+						<section>
+							<div class="box alt" style="margin-bottom: 1em;">
+								<div class="row 50% uniform" style="width: 100%;">
+									<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 20%">
+										<a href="https://cfather.github.io"><span class="image fit" style="margin-bottom: 0.5em;">
+											<img src="images/bohao_photo.jfif" alt="" style="border-radius: 50%;" /></span>Bohao Zhang<sup>1</sup></a></div>
+
+									<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 20%">
+										<a><span class="image fit" style="margin-bottom: 0.5em;">
+											<img src="images/randomhuman.png" alt="" style="border-radius: 50%;" /></span>Zichang Zhou<sup>1</sup></a></div>
+									
+ 									<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 20%">
+										<a href="https://www.roahmlab.com/ram-personal"><span class="image fit" style="margin-bottom: 0.5em;">
+											<img src="images/ram_photo.jfif" alt="" style="border-radius: 50%;" /></span>Ram Vasudevan<sup>1</sup></a></div>
+												
+								</div>
+							</div>
+						</section>
+						<p>
+							<sup>1</sup> Robotics Institute, University of Michigan, Ann Arbor
+						</p>
+						<h4>This work is developed under <a href="https://www.roahmlab.com">RoahmLab</a>.</h4>
+				
+
+						<!-- <hr>
+						<h3>BibTeX</h3>
+						<pre><code>@article{zhang2024rapidrobusttrajectoryoptimization,
+  title={Rapid and Robust Trajectory Optimization for Humanoids},
+  author={Bohao Zhang and Ram Vasudevan},
+  journal={arXiv preprint arXiv:2409.00303},
+  year={2024}
+					    	</code></pre> -->
+
+						<hr>
+						<h3>Related Projects</h3>
+						<a href="https://roahmlab.github.io/RAPTOR/">RAPTOR</a> - RAPid and Robust Trajectory Optimization for Robots
+						<br>
+						<a href="https://roahmlab.github.io/kinova_robust_control/">kinova_robust_control</a> - Robust Tracking Controller Under Model Uncertainties for Kinova-Gen3
+						<br>
+						<a href="https://roahmlab.github.io/ARMOUR/">ARMOUR</a> - Autonomous Robust Manipulation via Optimization with Uncertainty-aware Reachability
+						
+					</section>
+			</div>
+
+			<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>

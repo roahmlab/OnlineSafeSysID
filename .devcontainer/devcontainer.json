@@ -5,7 +5,7 @@
         "context": ".."
     },
     "runArgs": [
-        "--name=kinova_robust_control_container",
+        "--name=online_safe_sysid_container",
         "-it", // interactive terminal
         "--network=host" // so that you can connect to the robot
     ],
