@@ -1,23 +1,28 @@
-# Docker Image for ROS2 Humble Development with Kinova and Additional Tools
+# Provably-Safe, Online System Identification
 
 ## Overview
 
-This Dockerfile sets up a development environment for [kinova_robust_control](https://github.com/roahmlab/kinova_robust_control/tree/humble), focusing on ROS2 Humble and support for Kinova's Kortex API.
-The environment is built on the `ubuntu:22.04` base image.
+This repository hosts the code to reproduce the results in our paper "Provably-Safe, Online System Identification" on Kinova-Gen3 arm.
 
-### Key Features
-- ROS2 Humble setup with essential tools.
-- Integration with Kinova's API.
-- Support for Python-based development and C++ with Conan.
-- Installation of Pinocchio for robot kinematics and dynamics.
-- Pre-installed utilities for debugging, testing, and development.
+As shown in `.gitmodules`, this repository is essentially a docker container that includes two modules:
+1. [kinova_robust_control](https://roahmlab.github.io/kinova_robust_control/): robust controller for hardware Kinova-Gen3.
+2. [RAPTOR](https://roahmlab.github.io/RAPTOR/): trajectory optimization and system identification related code.
 
-### Prerequisites
+Readers are welcome to refer to the introduction in kinova_robust_control's [README](https://github.com/roahmlab/kinova_robust_control/blob/humble/README.md) for more information on the robust controller and the hardware interface,
+and the introduction in RAPTOR's [README](https://github.com/roahmlab/RAPTOR/tree/main/Examples/Kinova/SystemIdentification) for more information on provably-safe exciting trajectory optimization and robust system identification for unknown payloads.
 
-- **Docker Installed**: Ensure Docker is set up properly and running on your system.
-- **Internet Access**: The Docker container uses host networking mode for communication.
+## Introduction
 
-## Build the Docker
+Precise manipulation tasks require accurate knowledge of payload inertial parameters.
+Unfortunately, identifying these parameters for unknown payloads while ensuring that the robotic system satisfies its input and state constraints while avoiding collisions with the environment remains a significant challenge.
+This paper presents an integrated framework that enables robotic manipulators to safely and automatically identify payload parameters while maintaining operational safety guarantees. 
+The framework consists of two synergistic components: 
+1. an online trajectory planning and control framework that generates provably-safe exciting trajectories for system identification that can be tracked while respecting robot constraints and avoiding obstacles
+2. a robust system identification method that computes rigorous overapproximative bounds on end-effector inertial parameters assuming bounded sensor noise. 
+
+Experimental validation on a robotic manipulator performing challenging tasks with various unknown payloads demonstrates the framework's effectiveness in establishing accurate parameter bounds while maintaining safety throughout the identification process.
+
+## Installation
 
 This repository includes a [Dockerfile](docker/Dockerfile) that installs all necessary dependencies.
 
@@ -26,92 +31,72 @@ This repository includes a [Dockerfile](docker/Dockerfile) that installs all nec
 ### 1. Clone the Docker Repository (with Submodules)
 
 ```bash
-git clone --recurse-submodules https://github.com/roahmlab/kinova_robust_control_docker.git
+git clone --recurse-submodules https://github.com/roahmlab/OnlineSafeSysID.git
 ```
 
-### 2. Update `kinova_robust_control` (Optional)
+### 2. Update `kinova_robust_control` and `RAPTOR` (Optional)
 
 ```bash
 git submodule update --init --recursive
 ```
 
-### 3. Build the Docker Container in VS Code
+### 3. Get HSL
+
+We have selected [HSL](https://www.hsl.rl.ac.uk/) to solve large linear systems in the nonlinear optimization problem in RAPTOR. 
+Please follow the instructions in HSL section of the [README](https://github.com/roahmlab/RAPTOR/blob/main/Installation/README.md) in RAPTOR to access HSL package and integrate in this container properly.
+
+### 4. Build the Docker Container in VS Code
 
 1. Open VS Code.
 2. Press `Ctrl+Shift+P` and search for: `Dev Containers: Rebuild and Reopen Container`.
 3. Select it to automatically build the container using the provided Dockerfile.
 
-### 4. Build `kinova_robust_control`
+### 5. Build `kinova_robust_control`
 
-Inside the container, run:
+Inside the container (`/workspaces/OnlineSafeSysID`), run the following to build the repository:
 
 ```bash
 colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
 ```
 
-As before, source the workspace after opening a new terminal:
+### 6. Build `RAPTOR`
+
+Since this command does not include pybind programs inside RAPTOR, you will have to go inside RAPTOR and build the code again:
+
+```bash
+cd src/RAPTOR
+mkdir build
+cd build
+cmake ..
+make -j8
+```
+
+### 7. Other Notes
+Every time you open a new terminal, you need the following command to load all ros2 environment variables in order:
 
 ```bash
 source install/setup.bash
 ```
 
-For more details, visit the [kinova_robust_control humble branch](https://github.com/roahmlab/kinova_robust_control/tree/humble).
-
 Note that you may have to remove all previous compiled objects if you make changes to the dockerfile and rebuild the docker container:
+
 ```bash
 rm -rf build install devel
 ```
+
 Please save important files or folders before you do this.
 
-## Detail for the dockerfile
-
-#### Base Environment
-- Uses Ubuntu 22.04.
-- Sets non-interactive mode to streamline the installation process.
-
-#### Locale and Dependencies
-- Configures locales for `en_US.UTF-8`.
-- Installs essential tools like `nano`, `git`, `python3`, `pip`, and compilers.
-
-#### ROS2 Humble Installation
-- Installs ROS2 Humble desktop packages.
-- Adds ROS setup to the environment for easy access.
-
-#### Kinova Kortex API
-- Clones the Kortex repository.
-- Installs the Kortex Python API for controlling Kinova robotic arms.
-
-#### Python Development Tools
-- Includes testing and linting tools such as `pytest`, `argcomplete`, and `flake8`.
-
-#### C++ Dependencies
-- Sets up Conan for dependency management.
-- Configures default Conan profile for modern C++ standards.
-
-#### Robot Kinematics and Dynamics with Pinocchio
-- Installs the Pinocchio library for efficient robot dynamics computations.
-
-#### Environment Variables
-- Configures environment variables for ROS, Python, and installed libraries.
-
-## Acknowlgement
-
-The Docker file pulls code from the [KINOVA® KORTEX™ API Reference](https://github.com/Kinovarobotics/kortex) developed and maintained by [Kinova Robotics](https://www.kinovarobotics.com/). 
-We gratefully acknowledge their work and contribution to the open-source robotics community.
+For more information on installation, please visit [README](https://github.com/roahmlab/kinova_robust_control/blob/humble/installation/README.md) in kinova_robust_control.
 
 ## Authors
 
 This work is developed in [ROAHM Lab](https://www.roahmlab.com/). 
 
-Sean Rice (Seanrice@umich.edu): Original creater of the docker file.
+[Bohao Zhang](https://cfather.github.io/) (jimzhang@umich.edu)
 
-Zichang Zhou (zhouzichang1234@gmail.com): Clean up the docker file and the repository.
+Zichang Zhou
 
-[Bohao Zhang](https://cfather.github.io/) (jimzhang@umich.edu): **Current maintainer**. Clean up the docker file and the repository.
-
-## Rules
-If you have any questions or suggestions, please raise them in [Issues](https://github.com/roahmlab/kinova_robust_control_docker/issues).
-We will get back to you as soon as possible.
+[Ram Vasudevan](https://www.roahmlab.com/ram-personal)
 
 
 
