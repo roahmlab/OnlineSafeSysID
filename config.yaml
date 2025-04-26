@@ -77,8 +77,8 @@
     vfilter_b: [0.7, 0.2, 0.1]
 
     has_init_pos: true
-    init_pos: [0.0, 0.262, 3.142, -2.269, 0.0, 0.960, 1.571] # home position
-    # init_pos: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0] # zero position
+    # init_pos: [0.0, 0.262, 3.142, -2.269, 0.0, 0.960, 1.571] # home position
+    init_pos: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0] # zero position
 
 
 /ros_kortex_system:
