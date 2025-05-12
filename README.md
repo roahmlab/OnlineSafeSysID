@@ -3,6 +3,7 @@
 ## Overview
 
 This repository hosts the code to reproduce the results in our paper "Provably-Safe, Online System Identification" on Kinova-Gen3 arm.
+Our paper is available at [arxiv](https://arxiv.org/abs/2504.21486).
 
 As shown in `.gitmodules`, this repository is essentially a docker container that includes two modules:
 1. [kinova_robust_control](https://roahmlab.github.io/kinova_robust_control/): robust controller for hardware Kinova-Gen3.
@@ -119,6 +120,17 @@ Launch the script in another terminal using:
 ros2 run experiments run_online_sysid_demo.py
 ```
 This will start the experiment.
+
+## Bibtex
+To cite our paper in your academic research, please use the following bibtex entry:
+```bibtex
+@article{zhang2025provably,
+  title={Provably-Safe, Online System Identification},
+  author={Zhang, Bohao and Zhou, Zichang and Vasudevan, Ram},
+  journal={arXiv preprint arXiv:2504.21486},
+  year={2025}
+}
+```
 
 ## Authors
 
